@@ -55,7 +55,9 @@ MonoBehaviour:
     type: 2}
   labyrinthTileStartPref: {fileID: 114535140213138924, guid: 87cba5dfe88c39342aa9bbcabd865b07,
     type: 2}
-  labyrinthTileFinishPref: {fileID: 114374390232294158, guid: 2061e01ca2a06ec4aa4df5575d899a0f,
+  labyrinthTileFinishPref: {fileID: 114473352026658360, guid: 2061e01ca2a06ec4aa4df5575d899a0f,
+    type: 2}
+  characterPrefab: {fileID: 114482670584405404, guid: 500d6ee1ea5a93b4c9be0a9117d6f26a,
     type: 2}
   labyrinthSizeX: 10
   labyrinthSizeZ: 10

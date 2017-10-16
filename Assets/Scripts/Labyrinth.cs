@@ -9,7 +9,9 @@ public class Labyrinth : MonoBehaviour
     public LabyrinthTile labyrinthTilePref;
     public LabyrinthTileStart labyrinthTileStartPref;
     public LabyrinthTileFinish labyrinthTileFinishPref;
+    public Character characterPrefab;
 
+    private Character characterInstance;
     private LabyrinthTileStart labyrinthStartInstance;
     private LabyrinthTileFinish labyrinthTileFinishInstance;
 
@@ -40,17 +42,21 @@ public class Labyrinth : MonoBehaviour
         }
 
         // start tiles
-        labyrinthStartInstance = Instantiate(labyrinthTileStartPref) as LabyrinthTileStart;
+        labyrinthStartInstance = Instantiate(labyrinthTileStartPref, transform) as LabyrinthTileStart;
         labyrinthStartInstance.transform.Translate(-2, 0, 0);
         labyrinthTiles[0, 0].HideWall(2);
         labyrinthTiles[0, 1].HideWall(2);
 
         // finish tiles
-        labyrinthTileFinishInstance = Instantiate(labyrinthTileFinishPref) as LabyrinthTileFinish;
+        labyrinthTileFinishInstance = Instantiate(labyrinthTileFinishPref, transform) as LabyrinthTileFinish;
         labyrinthTileFinishInstance.transform.Translate(-labyrinthSizeX -1, 0, -labyrinthSizeZ + 1);
         labyrinthTiles[labyrinthSizeX -1, labyrinthSizeZ - 1].HideWall(1);
         labyrinthTiles[labyrinthSizeX -1, labyrinthSizeZ - 2].HideWall(1);
 
+        // Spawn character
+        characterInstance = Instantiate(characterPrefab) as Character;
+        characterInstance.name = "Character";
+        characterInstance.transform.Translate(-2,0,0);
     }
 
     /// <summary>

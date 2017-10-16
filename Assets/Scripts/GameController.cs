@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
     void play()
     {
         labyrinthInstance = Instantiate(labyrinthPref) as Labyrinth;
+        labyrinthInstance.name = "Labyrinth";
         labyrinthInstance.CreateLabyrinth();
     }
 }
