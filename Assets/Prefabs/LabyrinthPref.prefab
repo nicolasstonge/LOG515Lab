@@ -51,7 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79fccdc8a11a5254cbc1fc3186628b6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  labyrinthTilePref: {fileID: 114216337743471110, guid: 22c2c087e81871648b00e08d7bde6931,
+  labyrinthTilePref: {fileID: 114934681924324144, guid: 22c2c087e81871648b00e08d7bde6931,
     type: 2}
-  labyrinthSizeX: 20
-  labyrinthSizeZ: 20
+  labyrinthTileStartPref: {fileID: 114535140213138924, guid: 87cba5dfe88c39342aa9bbcabd865b07,
+    type: 2}
+  labyrinthTileFinishPref: {fileID: 114374390232294158, guid: 2061e01ca2a06ec4aa4df5575d899a0f,
+    type: 2}
+  labyrinthSizeX: 10
+  labyrinthSizeZ: 10

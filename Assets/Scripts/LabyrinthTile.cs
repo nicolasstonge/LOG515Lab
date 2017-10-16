@@ -139,4 +139,24 @@ public class LabyrinthTile : MonoBehaviour
         }
     }
 
+    public void HideWall(int side)
+    {
+        if (side == 1)
+        {
+            transform.Find("Wall1").gameObject.SetActive(false);
+        }
+        if (side == 2)
+        {
+            transform.Find("Wall2").gameObject.SetActive(false);
+        }
+        if (side == 3)
+        {
+            transform.Find("Wall3").gameObject.SetActive(false);
+        }
+        if (side == 4)
+        {
+            transform.Find("Wall4").gameObject.SetActive(false);
+        }
+    }
+
 }

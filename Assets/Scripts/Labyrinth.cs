@@ -7,6 +7,11 @@ public class Labyrinth : MonoBehaviour
 
     // labyrinth prefab
     public LabyrinthTile labyrinthTilePref;
+    public LabyrinthTileStart labyrinthTileStartPref;
+    public LabyrinthTileFinish labyrinthTileFinishPref;
+
+    private LabyrinthTileStart labyrinthStartInstance;
+    private LabyrinthTileFinish labyrinthTileFinishInstance;
 
     // labyrinth size
     public int labyrinthSizeX;
@@ -33,6 +38,19 @@ public class Labyrinth : MonoBehaviour
         {
             ModifyActiveTiles(activeTiles);
         }
+
+        // start tiles
+        labyrinthStartInstance = Instantiate(labyrinthTileStartPref) as LabyrinthTileStart;
+        labyrinthStartInstance.transform.Translate(-2, 0, 0);
+        labyrinthTiles[0, 0].HideWall(2);
+        labyrinthTiles[0, 1].HideWall(2);
+
+        // finish tiles
+        labyrinthTileFinishInstance = Instantiate(labyrinthTileFinishPref) as LabyrinthTileFinish;
+        labyrinthTileFinishInstance.transform.Translate(-labyrinthSizeX -1, 0, -labyrinthSizeZ + 1);
+        labyrinthTiles[labyrinthSizeX -1, labyrinthSizeZ - 1].HideWall(1);
+        labyrinthTiles[labyrinthSizeX -1, labyrinthSizeZ - 2].HideWall(1);
+
     }
 
     /// <summary>
