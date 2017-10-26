@@ -15,9 +15,8 @@ public class Labyrinth : MonoBehaviour
     private LabyrinthTileStart labyrinthStartInstance;
     private LabyrinthTileFinish labyrinthTileFinishInstance;
 
-    // labyrinth size
-    public int labyrinthSizeX;
-    public int labyrinthSizeZ;
+    private int labyrinthSizeX;
+    private int labyrinthSizeZ;
 
     // labyrinth map
     private LabyrinthTile[,] labyrinthTiles;
@@ -25,8 +24,11 @@ public class Labyrinth : MonoBehaviour
     /// <summary>
     /// This method will create the labyrinth.
     /// </summary>
-    public void CreateLabyrinth()
+    public void CreateLabyrinth(int sizeX, int sizeZ)
     {
+        labyrinthSizeX = sizeX;
+        labyrinthSizeZ = sizeZ;
+
         // labyrinth map
         labyrinthTiles = new LabyrinthTile[labyrinthSizeX, labyrinthSizeZ];
 
@@ -54,7 +56,7 @@ public class Labyrinth : MonoBehaviour
         labyrinthTiles[labyrinthSizeX -1, labyrinthSizeZ - 2].HideWall(1);
 
         // Spawn character
-        characterInstance = Instantiate(characterPrefab) as Character;
+        characterInstance = Instantiate(characterPrefab, transform) as Character;
         characterInstance.name = "Character";
         characterInstance.transform.Translate(-2,0,0);
     }

@@ -5,14 +5,17 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public Labyrinth labyrinthPref;
+    public Menu menuPref;
 
     private Labyrinth labyrinthInstance;
+    private Menu menuInstance;
 
 	// Use this for initialization
 	void Start ()
     {
-        play();
-	}
+        menuInstance = Instantiate(menuPref, transform) as Menu;
+        menuInstance.name = "Menu";
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -20,10 +23,17 @@ public class GameController : MonoBehaviour {
 		// to do restart new labyrinth
 	}
 
-    void play()
+    public void play()
     {
+        menuInstance.HideMenu();
         labyrinthInstance = Instantiate(labyrinthPref) as Labyrinth;
         labyrinthInstance.name = "Labyrinth";
-        labyrinthInstance.CreateLabyrinth();
+        labyrinthInstance.CreateLabyrinth(10,10);
+    }
+
+    public void stop()
+    {
+        menuInstance.ShowMenu();
+        Destroy(labyrinthInstance.gameObject);
     }
 }

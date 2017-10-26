@@ -53,3 +53,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   labyrinthPref: {fileID: 114806870402558632, guid: 2f31681bf1ceae848a7222f6d23a8ef6,
     type: 2}
+  menuPref: {fileID: 114670199918683338, guid: 78481c30be0b1ca43ae136dc9e7548fb, type: 2}

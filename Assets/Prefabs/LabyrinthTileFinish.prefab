@@ -343,6 +343,8 @@ GameObject:
   - component: {fileID: 33263692779674704}
   - component: {fileID: 23068089161372464}
   - component: {fileID: 95785135340867010}
+  - component: {fileID: 65861274307389824}
+  - component: {fileID: 114157550030395706}
   m_Layer: 0
   m_Name: tresure_box
   m_TagString: Untagged
@@ -1672,6 +1674,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.005, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65861274307389824
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1847944446643766}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.27907372, y: 0.22047138, z: 0.20238414}
+  m_Center: {x: 0.0000004775288, y: 0.1270849, z: -0.002900928}
 --- !u!95 &95785135340867010
 Animator:
   serializedVersion: 3
@@ -1801,6 +1815,17 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114157550030395706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1847944446643766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f940c40304aa1ea4bb4e6689944878ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114473352026658360
 MonoBehaviour:
   m_ObjectHideFlags: 1
