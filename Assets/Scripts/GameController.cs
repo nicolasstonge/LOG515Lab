@@ -35,5 +35,7 @@ public class GameController : MonoBehaviour {
     {
         menuInstance.ShowMenu();
         Destroy(labyrinthInstance.gameObject);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 }
