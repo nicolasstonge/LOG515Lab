@@ -23,12 +23,12 @@ public class GameController : MonoBehaviour {
 		// to do restart new labyrinth
 	}
 
-    public void play()
+    public void play(int sizeX, int sizeZ)
     {
         menuInstance.HideMenu();
         labyrinthInstance = Instantiate(labyrinthPref) as Labyrinth;
         labyrinthInstance.name = "Labyrinth";
-        labyrinthInstance.CreateLabyrinth(10,10);
+        labyrinthInstance.CreateLabyrinth(sizeX, sizeZ);
     }
 
     public void stop()
