@@ -10,7 +10,9 @@ public class Labyrinth : MonoBehaviour
     public LabyrinthTileStart labyrinthTileStartPref;
     public LabyrinthTileFinish labyrinthTileFinishPref;
     public Character characterPrefab;
+    public KeyTile keyPrefab;
 
+    private KeyTile keyInstance;
     private Character characterInstance;
     private LabyrinthTileStart labyrinthStartInstance;
     private LabyrinthTileFinish labyrinthTileFinishInstance;
@@ -38,6 +40,7 @@ public class Labyrinth : MonoBehaviour
         // add the first tile
         activeTiles.Add(NewTile(0, 0));
 
+        // add other tiles
         while (activeTiles.Count > 0)
         {
             ModifyActiveTiles(activeTiles);
@@ -59,6 +62,13 @@ public class Labyrinth : MonoBehaviour
         characterInstance = Instantiate(characterPrefab, transform) as Character;
         characterInstance.name = "Character";
         characterInstance.transform.Translate(-2,0,0);
+
+        // Generate key
+        keyInstance = Instantiate(keyPrefab, transform) as KeyTile;
+        keyInstance.name = "Key";
+        System.Random rnd = new System.Random();
+        keyInstance.transform.Translate(rnd.Next(0, labyrinthSizeX - 1), 0, rnd.Next(0, labyrinthSizeZ - 1));
+        keyInstance.ActivateKeyCollider();
     }
 
     /// <summary>

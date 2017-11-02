@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : MonoBehaviour {
+public class KeyTile : MonoBehaviour {
 
-    public bool key;
+    public GoldKey keyObject;
 
 	// Use this for initialization
 	void Start () {
 
-        key = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void ActivateKeyCollider()
+    {
+        keyObject.gameObject.SetActive(true);
+    }
 }

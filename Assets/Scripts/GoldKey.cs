@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class GoldKey : MonoBehaviour {
 
-    private GameController gameControler;
-    private AudioSource audioSource;
-
     // Use this for initialization
     void Start () {
 
-        gameControler = GameObject.Find("GameController").GetComponent<GameController>();
-        audioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -21,7 +16,12 @@ public class GoldKey : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        audioSource.Play();
-        
+            GameObject key = GameObject.Find("Key");
+            key.GetComponent<AudioSource>().Play();
+
+            GameObject character = GameObject.Find("Character");
+            character.GetComponent<Character>().key = true;
+            transform.gameObject.SetActive(false);
+          
     }
 }
