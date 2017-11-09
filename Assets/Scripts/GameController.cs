@@ -35,6 +35,9 @@ public class GameController : MonoBehaviour {
     {
         menuInstance.ShowMenu();
         Destroy(labyrinthInstance.gameObject);
+        Destroy(GameObject.Find("Character"));
+        Destroy(GameObject.Find("Key"));
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }

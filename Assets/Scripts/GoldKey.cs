@@ -16,12 +16,14 @@ public class GoldKey : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Player")
+        {
             GameObject key = GameObject.Find("Key");
             key.GetComponent<AudioSource>().Play();
 
             GameObject character = GameObject.Find("Character");
             character.GetComponent<Character>().key = true;
             transform.gameObject.SetActive(false);
-          
+        }
     }
 }

@@ -11,7 +11,9 @@ public class Labyrinth : MonoBehaviour
     public LabyrinthTileFinish labyrinthTileFinishPref;
     public Character characterPrefab;
     public KeyTile keyPrefab;
+    public Treasure treasurePrefab;
 
+    private Treasure treasureInstance;
     private KeyTile keyInstance;
     private Character characterInstance;
     private LabyrinthTileStart labyrinthStartInstance;
@@ -58,17 +60,27 @@ public class Labyrinth : MonoBehaviour
         labyrinthTiles[labyrinthSizeX -1, labyrinthSizeZ - 1].HideWall(1);
         labyrinthTiles[labyrinthSizeX -1, labyrinthSizeZ - 2].HideWall(1);
 
-        // Spawn character
-        characterInstance = Instantiate(characterPrefab, transform) as Character;
-        characterInstance.name = "Character";
-        characterInstance.transform.Translate(-2,0,0);
+        // Scale labyrinth
+        transform.localScale = new Vector3(10,5,10);
 
         // Generate key
-        keyInstance = Instantiate(keyPrefab, transform) as KeyTile;
+        keyInstance = Instantiate(keyPrefab,transform.parent) as KeyTile;
         keyInstance.name = "Key";
-        System.Random rnd = new System.Random();
-        keyInstance.transform.Translate(rnd.Next(0, labyrinthSizeX - 1), 0, rnd.Next(0, labyrinthSizeZ - 1));
+        GameObject[] spawnPoints;
+        spawnPoints = GameObject.FindGameObjectsWithTag("Tile");
+        int index = Random.Range(0, spawnPoints.Length);
+        keyInstance.transform.Translate(spawnPoints[index].transform.position);
         keyInstance.ActivateKeyCollider();
+
+        // Generate treasure
+        treasureInstance = Instantiate(treasurePrefab, transform.parent) as Treasure;
+        treasureInstance.name = "Treasure";
+        treasureInstance.transform.Translate(GameObject.Find("LabyrinthTileFinish(Clone)").transform.position);
+
+        // Spawn character
+        characterInstance = Instantiate(characterPrefab, transform.parent) as Character;
+        characterInstance.name = "Character";
+        characterInstance.transform.Translate(GameObject.Find("LabyrinthTileStart(Clone)").transform.position);
     }
 
     /// <summary>

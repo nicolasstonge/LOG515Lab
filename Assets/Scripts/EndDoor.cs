@@ -22,17 +22,20 @@ public class EndDoor : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (GameObject.Find("Character").GetComponent<Character>().key == true)
+        if (other.tag == "Player")
         {
-            GameObject.Find("finish_door").GetComponent<Animation>().Play();
-            source.clip = doorOpenSound;
-            source.Play();
-        }
+            if (GameObject.Find("Character").GetComponent<Character>().key == true)
+            {
+                GameObject.Find("finish_door").GetComponent<Animation>().Play();
+                source.clip = doorOpenSound;
+                source.Play();
+            }
 
-        else
-        {
-            source.clip = doorLockedSound;
-            source.Play();
+            else
+            {
+                source.clip = doorLockedSound;
+                source.Play();
+            }
         }
     }
 }
