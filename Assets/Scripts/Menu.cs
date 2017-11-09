@@ -15,6 +15,8 @@ public class Menu : MonoBehaviour {
     public Button difficultyNormalBtn;
     public Button difficultyHardBtn;
     public Button difficultyVeryHardBtn;
+    public Button activateBtn;
+    public InputField activationField;
 
     private GameController gameControler;
 
@@ -34,6 +36,7 @@ public class Menu : MonoBehaviour {
         difficultyNormalBtn.onClick.AddListener(DifficultyNormalOnClick);
         difficultyHardBtn.onClick.AddListener(DifficultyHardOnClick);
         difficultyVeryHardBtn.onClick.AddListener(DifficultyVeryHardOnClick);
+        activateBtn.onClick.AddListener(ActivateOnClick);
     }
 	
 	// Update is called once per frame
@@ -63,6 +66,15 @@ public class Menu : MonoBehaviour {
         DisplayMainMenu();
     }
 
+    void ActivateOnClick()
+    {
+        if (activationField.text == "abc123")
+        {
+            DisplayMainMenu();
+        }
+        
+    }
+
     void PlayOnClick()
     {
         DisplayDifficultyMenu();
@@ -79,6 +91,7 @@ public class Menu : MonoBehaviour {
         transform.Find("main_panel").gameObject.SetActive(true);
         transform.Find("options_panel").gameObject.SetActive(false);
         transform.Find("difficulty_panel").gameObject.SetActive(false);
+        transform.Find("activation_panel").gameObject.SetActive(false);
     }
 
     void DisplayDifficultyMenu()
