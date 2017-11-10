@@ -144,3 +144,5 @@ MonoBehaviour:
     type: 2}
   treasurePrefab: {fileID: 114492160761212018, guid: 911f62346800e0c4bb5347e56ee99a77,
     type: 2}
+  monsterPrefab: {fileID: 114399244788951536, guid: cb9dbb7f1bb55f44a95f2f23608d375a,
+    type: 2}

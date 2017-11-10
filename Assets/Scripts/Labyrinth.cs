@@ -12,7 +12,9 @@ public class Labyrinth : MonoBehaviour
     public Character characterPrefab;
     public KeyTile keyPrefab;
     public Treasure treasurePrefab;
+    public Monster monsterPrefab;
 
+    private Monster monsterInstance;
     private Treasure treasureInstance;
     private KeyTile keyInstance;
     private Character characterInstance;
@@ -76,6 +78,23 @@ public class Labyrinth : MonoBehaviour
         treasureInstance = Instantiate(treasurePrefab, transform.parent) as Treasure;
         treasureInstance.name = "Treasure";
         treasureInstance.transform.Translate(GameObject.Find("LabyrinthTileFinish(Clone)").transform.position);
+
+        // Spawn monsters
+        int spawnedMonsters = 0;
+        while (spawnedMonsters < 5)
+        {
+            
+            int indexM = Random.Range(0, spawnPoints.Length);
+            if (spawnPoints[index].GetComponent<LabyrinthTile>().hasMonster == false)
+            {
+                Monster monster;
+                monster = Instantiate(monsterPrefab, transform.parent) as Monster;
+                monster.transform.Translate(spawnPoints[index].transform.position);
+                spawnPoints[index].GetComponent<LabyrinthTile>().hasMonster = true;
+                spawnedMonsters++;
+            }
+            
+        }
 
         // Spawn character
         characterInstance = Instantiate(characterPrefab, transform.parent) as Character;

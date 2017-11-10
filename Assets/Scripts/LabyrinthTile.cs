@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LabyrinthTile : MonoBehaviour
 {
+    public bool hasMonster = false;
 
     public int positionX;
 
