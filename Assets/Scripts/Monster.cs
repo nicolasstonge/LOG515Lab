@@ -7,13 +7,13 @@ public class Monster : MonoBehaviour {
     public float RotateSpeed = 1f;
     public float RotateRadius = 0.5f;
 
-    private Vector2 _centre;
+    //private Vector2 _centre;
     private float _angle;
 
     // Use this for initialization
     void Start () {
 
-        _centre = transform.position;
+        //_centre = transform.position;
     }
 
     // Update is called once per frame

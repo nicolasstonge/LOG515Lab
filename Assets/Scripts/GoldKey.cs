@@ -21,9 +21,9 @@ public class GoldKey : MonoBehaviour {
             GameObject key = GameObject.Find("Key");
             key.GetComponent<AudioSource>().Play();
 
-            GameObject character = GameObject.Find("Character");
-            character.GetComponent<Character>().key = true;
+            GameObject.Find("Character").GetComponent<Character>().key = true;
             transform.gameObject.SetActive(false);
+            GameObject.Find("HUD").GetComponent<Hud>().displayKeySymbol();
         }
     }
 }

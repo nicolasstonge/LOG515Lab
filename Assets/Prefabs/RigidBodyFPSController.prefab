@@ -107,12 +107,12 @@ GameObject:
   - component: {fileID: 222908975475973876}
   - component: {fileID: 114027104309676844}
   m_Layer: 0
-  m_Name: Image
+  m_Name: keySymbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1510997602798050
 GameObject:
   m_ObjectHideFlags: 1
@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 223647094721314512}
   - component: {fileID: 114619956748135106}
   - component: {fileID: 114574954359852926}
+  - component: {fileID: 114587394828713768}
   m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
@@ -480,6 +481,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114587394828713768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1630711601358166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c64c95d02bb094999ff6ce59cd606b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heart1: {fileID: 114302439583614730}
+  heart2: {fileID: 114741382629061342}
+  heart3: {fileID: 114412655930887714}
+  keySymbol: {fileID: 114027104309676844}
 --- !u!114 &114619956748135106
 MonoBehaviour:
   m_ObjectHideFlags: 1
