@@ -80,20 +80,21 @@ public class Labyrinth : MonoBehaviour
         treasureInstance.transform.Translate(GameObject.Find("LabyrinthTileFinish(Clone)").transform.position);
 
         // Spawn monsters
+        
         int spawnedMonsters = 0;
         while (spawnedMonsters < 5)
         {
-            
+
             int indexM = Random.Range(0, spawnPoints.Length);
-            if (spawnPoints[index].GetComponent<LabyrinthTile>().hasMonster == false)
+            if (spawnPoints[indexM].GetComponent<LabyrinthTile>().hasMonster == false)
             {
                 Monster monster;
                 monster = Instantiate(monsterPrefab, transform.parent) as Monster;
-                monster.transform.Translate(spawnPoints[index].transform.position);
-                spawnPoints[index].GetComponent<LabyrinthTile>().hasMonster = true;
+                monster.transform.Translate(spawnPoints[indexM].transform.position);
+                spawnPoints[indexM].GetComponent<LabyrinthTile>().hasMonster = true;
                 spawnedMonsters++;
             }
-            
+
         }
 
         // Spawn character
