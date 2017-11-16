@@ -79,8 +79,12 @@ public class Labyrinth : MonoBehaviour
         treasureInstance.name = "Treasure";
         treasureInstance.transform.Translate(GameObject.Find("LabyrinthTileFinish(Clone)").transform.position);
 
+        // Spawn character
+        characterInstance = Instantiate(characterPrefab, GameObject.Find("LabyrinthObjects").transform) as Character;
+        characterInstance.name = "Character";
+        characterInstance.transform.Translate(GameObject.Find("LabyrinthTileStart(Clone)").transform.position);
+
         // Spawn monsters
-        
         int spawnedMonsters = 0;
         while (spawnedMonsters < 5)
         {
@@ -96,11 +100,6 @@ public class Labyrinth : MonoBehaviour
             }
 
         }
-
-        // Spawn character
-        characterInstance = Instantiate(characterPrefab, GameObject.Find("LabyrinthObjects").transform) as Character;
-        characterInstance.name = "Character";
-        characterInstance.transform.Translate(GameObject.Find("LabyrinthTileStart(Clone)").transform.position);
     }
 
     /// <summary>

@@ -9,23 +9,39 @@ public class Monster : MonoBehaviour
     public float RotateRadius = 0.5f;
     private bool iFrame = false;
 
-    //private Vector2 _centre;
     private float _angle;
+    Character player;
+
+    public bool idle = true;
+    public bool attacked = false;
 
     // Use this for initialization
     void Start()
     {
-
-        //_centre = transform.position;
+        player = GameObject.Find("Character").GetComponent<Character>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        _angle += RotateSpeed * Time.deltaTime;
+        
+        transform.LookAt(player.transform);
 
-        var newPosition = new Vector3(transform.position.x + (Mathf.Sin(_angle) * RotateRadius), transform.position.y, transform.position.z + (Mathf.Cos(_angle) * RotateRadius));
-        transform.position = newPosition;
+        if (idle & !attacked)
+        {
+            _angle += RotateSpeed * Time.deltaTime;
+
+            var newPosition = new Vector3(transform.position.x + (Mathf.Sin(_angle) * RotateRadius), transform.position.y, transform.position.z + (Mathf.Cos(_angle) * RotateRadius));
+            transform.position = newPosition;
+        }
+        if(!idle)
+        {
+            attacked = true;
+            transform.Translate(Vector3.forward * 3 * Time.deltaTime);
+        }
+
+        
     }
 
     private void OnTriggerStay(Collider other)
