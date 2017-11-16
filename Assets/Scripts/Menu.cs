@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Menu : MonoBehaviour {
+public class Menu : MonoBehaviour
+{
 
     public Button exitButton;
     public Button playButton;
@@ -16,14 +17,19 @@ public class Menu : MonoBehaviour {
     public Button difficultyHardBtn;
     public Button difficultyVeryHardBtn;
     public Button activateBtn;
+    public Button gameOverRestartBtn;
+    public Button gameOverMainMenuBtn;
+    public Button gameOverExitBtn;
+
     public InputField activationField;
 
     private GameController gameControler;
 
-
+    int selectedDifficulty;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         gameControler = GameObject.Find("GameController").GetComponent<GameController>();
         exitButton.onClick.AddListener(ExitOnClick);
@@ -37,23 +43,30 @@ public class Menu : MonoBehaviour {
         difficultyHardBtn.onClick.AddListener(DifficultyHardOnClick);
         difficultyVeryHardBtn.onClick.AddListener(DifficultyVeryHardOnClick);
         activateBtn.onClick.AddListener(ActivateOnClick);
+        gameOverExitBtn.onClick.AddListener(ExitOnClick);
+        gameOverMainMenuBtn.onClick.AddListener(DifficultyBackOnClick);
+        gameOverRestartBtn.onClick.AddListener(GameOverRestartOnClick);
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    void GameOverRestartOnClick()
+    {
+        gameControler.restart(selectedDifficulty);
+    }
 
     void ExitOnClick()
     {
-        Debug.Log("exit");
         Application.Quit();
     }
 
     void OptionOnClick()
     {
         DisplayOptionMenu();
-        Debug.Log("option");
     }
 
     void OptionBackOnClick()
@@ -64,6 +77,7 @@ public class Menu : MonoBehaviour {
     void DifficultyBackOnClick()
     {
         DisplayMainMenu();
+        playMusic(true);
     }
 
     void ActivateOnClick()
@@ -72,7 +86,7 @@ public class Menu : MonoBehaviour {
         {
             DisplayMainMenu();
         }
-        
+
     }
 
     void PlayOnClick()
@@ -92,12 +106,20 @@ public class Menu : MonoBehaviour {
         transform.Find("options_panel").gameObject.SetActive(false);
         transform.Find("difficulty_panel").gameObject.SetActive(false);
         transform.Find("activation_panel").gameObject.SetActive(false);
+        transform.Find("gameover_panel").gameObject.SetActive(false);
     }
 
     void DisplayDifficultyMenu()
     {
         transform.Find("difficulty_panel").gameObject.SetActive(true);
         transform.Find("main_panel").gameObject.SetActive(false);
+    }
+
+    public void DisplayGameOver()
+    {
+        transform.Find("main_panel").gameObject.SetActive(false);
+        transform.Find("gameover_panel").gameObject.SetActive(true);
+        playMusic(false);
     }
 
     public void HideMenu()
@@ -113,26 +135,44 @@ public class Menu : MonoBehaviour {
 
     public void DifficultyVeryEasyOnClick()
     {
+        selectedDifficulty = 1;
         gameControler.play(5, 5);
     }
 
     public void DifficultyEasyOnClick()
     {
+        selectedDifficulty = 2;
         gameControler.play(10, 10);
     }
 
     public void DifficultyNormalOnClick()
     {
+        selectedDifficulty = 3;
         gameControler.play(20, 20);
     }
 
     public void DifficultyHardOnClick()
     {
+        selectedDifficulty = 4;
         gameControler.play(30, 30);
     }
 
     public void DifficultyVeryHardOnClick()
     {
+        selectedDifficulty = 5;
         gameControler.play(40, 40);
+    }
+
+    public void playMusic(bool music)
+    {
+        if (music)
+        {
+            transform.GetComponent<AudioSource>().Play();
+        }
+        else
+        {
+            transform.GetComponent<AudioSource>().Stop();
+        }
+
     }
 }

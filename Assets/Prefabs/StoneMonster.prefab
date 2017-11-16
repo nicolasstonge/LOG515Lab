@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 111112525180217106}
   - component: {fileID: 114734380042095708}
   - component: {fileID: 114399244788951536}
+  - component: {fileID: 65861513143742990}
   m_Layer: 0
   m_Name: StoneMonster
   m_TagString: Untagged
@@ -290,6 +291,18 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 1db38da97b6ad094dbca967f13dd370f, type: 3}
+--- !u!65 &65861513143742990
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1467363643254694}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8944807, y: 0.8990705, z: 1.0965343}
+  m_Center: {x: 0.0016934872, y: 0.49684536, z: -0.048267126}
 --- !u!111 &111112525180217106
 Animation:
   m_ObjectHideFlags: 1

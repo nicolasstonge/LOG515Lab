@@ -66,7 +66,7 @@ public class Labyrinth : MonoBehaviour
         transform.localScale = new Vector3(10,5,10);
 
         // Generate key
-        keyInstance = Instantiate(keyPrefab,transform.parent) as KeyTile;
+        keyInstance = Instantiate(keyPrefab, GameObject.Find("LabyrinthObjects").transform) as KeyTile;
         keyInstance.name = "Key";
         GameObject[] spawnPoints;
         spawnPoints = GameObject.FindGameObjectsWithTag("Tile");
@@ -75,7 +75,7 @@ public class Labyrinth : MonoBehaviour
         keyInstance.ActivateKeyCollider();
 
         // Generate treasure
-        treasureInstance = Instantiate(treasurePrefab, transform.parent) as Treasure;
+        treasureInstance = Instantiate(treasurePrefab, GameObject.Find("LabyrinthObjects").transform) as Treasure;
         treasureInstance.name = "Treasure";
         treasureInstance.transform.Translate(GameObject.Find("LabyrinthTileFinish(Clone)").transform.position);
 
@@ -89,7 +89,7 @@ public class Labyrinth : MonoBehaviour
             if (spawnPoints[indexM].GetComponent<LabyrinthTile>().hasMonster == false)
             {
                 Monster monster;
-                monster = Instantiate(monsterPrefab, transform.parent) as Monster;
+                monster = Instantiate(monsterPrefab, GameObject.Find("LabyrinthObjects").transform) as Monster;
                 monster.transform.Translate(spawnPoints[indexM].transform.position);
                 spawnPoints[indexM].GetComponent<LabyrinthTile>().hasMonster = true;
                 spawnedMonsters++;
@@ -98,7 +98,7 @@ public class Labyrinth : MonoBehaviour
         }
 
         // Spawn character
-        characterInstance = Instantiate(characterPrefab, transform.parent) as Character;
+        characterInstance = Instantiate(characterPrefab, GameObject.Find("LabyrinthObjects").transform) as Character;
         characterInstance.name = "Character";
         characterInstance.transform.Translate(GameObject.Find("LabyrinthTileStart(Clone)").transform.position);
     }
