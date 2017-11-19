@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class Labyrinth : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class Labyrinth : MonoBehaviour
 
     private int labyrinthSizeX;
     private int labyrinthSizeZ;
+
+    public NavMeshSurface navSurface;
 
     // labyrinth map
     private LabyrinthTile[,] labyrinthTiles;
@@ -64,6 +68,7 @@ public class Labyrinth : MonoBehaviour
 
         // Scale labyrinth
         transform.localScale = new Vector3(10,5,10);
+        navSurface.BuildNavMesh();
 
         // Generate key
         keyInstance = Instantiate(keyPrefab, GameObject.Find("LabyrinthObjects").transform) as KeyTile;

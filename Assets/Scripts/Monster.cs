@@ -1,47 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Monster : MonoBehaviour
 {
-
-    public float RotateSpeed = 1f;
-    public float RotateRadius = 0.5f;
     private bool iFrame = false;
-
-    private float _angle;
-    Character player;
-
     public bool idle = true;
-    public bool attacked = false;
+
+    Character player;
+    NavMeshAgent agent;
+    GameObject[] wayPoints;
+
+    int idleDestination;
 
     // Use this for initialization
     void Start()
     {
         player = GameObject.Find("Character").GetComponent<Character>();
-        
+        agent = GetComponent<NavMeshAgent>();
+        wayPoints = GameObject.FindGameObjectsWithTag("Waypoint");
+        idleDestination = GetRandomWayPoint();
+        agent.SetDestination(wayPoints[idleDestination].transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        transform.LookAt(player.transform);
 
-        if (idle & !attacked)
+        if (idle)
         {
-            _angle += RotateSpeed * Time.deltaTime;
-
-            var newPosition = new Vector3(transform.position.x + (Mathf.Sin(_angle) * RotateRadius), transform.position.y, transform.position.z + (Mathf.Cos(_angle) * RotateRadius));
-            transform.position = newPosition;
+            if (agent.remainingDistance == 0)
+            {
+                idleDestination = GetRandomWayPoint();
+                agent.SetDestination(wayPoints[idleDestination].transform.position);
+            }
         }
-        if(!idle)
+        if (!idle)
         {
-            attacked = true;
-            transform.Translate(Vector3.forward * 3 * Time.deltaTime);
+            agent.SetDestination(player.transform.position);
         }
+    }
 
-        
+    private int GetRandomWayPoint()
+    {
+        System.Random rnd = new System.Random();
+        int r = rnd.Next(wayPoints.Length);
+        return r;
+
     }
 
     private void OnTriggerStay(Collider other)
