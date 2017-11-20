@@ -12,6 +12,8 @@ public class Monster : MonoBehaviour
     NavMeshAgent agent;
     GameObject[] wayPoints;
 
+    System.Random rnd = new System.Random();
+
     int idleDestination;
 
     // Use this for initialization
@@ -30,11 +32,12 @@ public class Monster : MonoBehaviour
 
         if (idle)
         {
-            if (agent.remainingDistance == 0)
+            if (agent.remainingDistance <= 1)
             {
                 idleDestination = GetRandomWayPoint();
                 agent.SetDestination(wayPoints[idleDestination].transform.position);
             }
+
         }
         if (!idle)
         {
@@ -44,7 +47,7 @@ public class Monster : MonoBehaviour
 
     private int GetRandomWayPoint()
     {
-        System.Random rnd = new System.Random();
+        
         int r = rnd.Next(wayPoints.Length);
         return r;
 

@@ -15,8 +15,6 @@ public class Labyrinth : MonoBehaviour
     public KeyTile keyPrefab;
     public Treasure treasurePrefab;
     public Monster monsterPrefab;
-
-    private Monster monsterInstance;
     private Treasure treasureInstance;
     private KeyTile keyInstance;
     private Character characterInstance;
@@ -91,10 +89,10 @@ public class Labyrinth : MonoBehaviour
 
         // Spawn monsters
         int spawnedMonsters = 0;
-        while (spawnedMonsters < 5)
+        System.Random rdm = new System.Random();
+        while (spawnedMonsters < sizeX)
         {
-
-            int indexM = Random.Range(0, spawnPoints.Length);
+            int indexM = rdm.Next(0, spawnPoints.Length);
             if (spawnPoints[indexM].GetComponent<LabyrinthTile>().hasMonster == false)
             {
                 Monster monster;
@@ -103,6 +101,7 @@ public class Labyrinth : MonoBehaviour
                 spawnPoints[indexM].GetComponent<LabyrinthTile>().hasMonster = true;
                 spawnedMonsters++;
             }
+            
 
         }
     }
