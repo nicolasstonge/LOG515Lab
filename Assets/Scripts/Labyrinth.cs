@@ -89,16 +89,21 @@ public class Labyrinth : MonoBehaviour
 
         // Spawn monsters
         int spawnedMonsters = 0;
-        System.Random rdm = new System.Random();
+
+        GameObject[] WayPoints;
+        WayPoints = GameObject.FindGameObjectsWithTag("Waypoint");
+
         while (spawnedMonsters < sizeX)
         {
-            int indexM = rdm.Next(0, spawnPoints.Length);
-            if (spawnPoints[indexM].GetComponent<LabyrinthTile>().hasMonster == false)
+            int indexM = GameObject.Find("GameController").GetComponent<GameController>().GetRandomInt(0, WayPoints.Length);
+            if (WayPoints[indexM].transform.parent.GetComponent<LabyrinthTile>().hasMonster == false)
             {
                 Monster monster;
                 monster = Instantiate(monsterPrefab, GameObject.Find("LabyrinthObjects").transform) as Monster;
-                monster.transform.Translate(spawnPoints[indexM].transform.position);
-                spawnPoints[indexM].GetComponent<LabyrinthTile>().hasMonster = true;
+                monster.GetComponent<NavMeshAgent>().enabled = false;
+                monster.transform.Translate(WayPoints[indexM].transform.position);
+                WayPoints[indexM].transform.parent.GetComponent<LabyrinthTile>().hasMonster = true;
+                monster.GetComponent<NavMeshAgent>().enabled = true;
                 spawnedMonsters++;
             }
             
@@ -169,5 +174,18 @@ public class Labyrinth : MonoBehaviour
             currentTile.InitSide(randomSide);
             currentTile.displayWall(randomSide);
         }
+    }
+
+    private GameObject[] RandomizeArray(GameObject[] arr)
+    {
+        for (var i = arr.Length - 1; i > 0; i--)
+        {
+            var r = Random.Range(0, i);
+            var tmp = arr[i];
+            arr[i] = arr[r];
+            arr[r] = tmp;
+        }
+
+        return arr;
     }
 }

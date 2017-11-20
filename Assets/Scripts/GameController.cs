@@ -11,9 +11,13 @@ public class GameController : MonoBehaviour
     private Labyrinth labyrinthInstance;
     private Menu menuInstance;
 
+    int seed = (int)System.DateTime.Now.Ticks;
+    private System.Random rnd; 
+
     // Use this for initialization
     void Start()
     {
+        rnd = new System.Random(seed);
         menuInstance = Instantiate(menuPref, transform) as Menu;
         menuInstance.name = "Menu";
     }
@@ -84,5 +88,13 @@ public class GameController : MonoBehaviour
         {
             menuInstance.DifficultyVeryHardOnClick();
         }
+    }
+
+    public int GetRandomInt(int min, int max)
+    {
+
+        int r = rnd.Next(min,max);
+        return r;
+
     }
 }

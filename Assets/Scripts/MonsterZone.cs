@@ -2,27 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterZone : MonoBehaviour {
+public class MonsterZone : MonoBehaviour
+{
 
     public Monster monster;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     private void OnTriggerStay(Collider other)
     {
-            if (other.tag == "Player")
-            {
+        if (other.tag == "Player")
+        {
 
-            monster.idle = false; 
-            }
+            monster.idle = false;
+        }
     }
 
     private void OnTriggerExit(Collider other)

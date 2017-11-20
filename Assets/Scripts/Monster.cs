@@ -8,21 +8,21 @@ public class Monster : MonoBehaviour
     private bool iFrame = false;
     public bool idle = true;
 
+    GameController gameController;
     Character player;
     NavMeshAgent agent;
     GameObject[] wayPoints;
-
-    System.Random rnd = new System.Random();
 
     int idleDestination;
 
     // Use this for initialization
     void Start()
     {
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
         player = GameObject.Find("Character").GetComponent<Character>();
         agent = GetComponent<NavMeshAgent>();
         wayPoints = GameObject.FindGameObjectsWithTag("Waypoint");
-        idleDestination = GetRandomWayPoint();
+        idleDestination = gameController.GetRandomInt(0, wayPoints.Length);
         agent.SetDestination(wayPoints[idleDestination].transform.position);
     }
 
@@ -34,7 +34,7 @@ public class Monster : MonoBehaviour
         {
             if (agent.remainingDistance <= 1)
             {
-                idleDestination = GetRandomWayPoint();
+                idleDestination = gameController.GetRandomInt(0, wayPoints.Length);
                 agent.SetDestination(wayPoints[idleDestination].transform.position);
             }
 
@@ -43,14 +43,6 @@ public class Monster : MonoBehaviour
         {
             agent.SetDestination(player.transform.position);
         }
-    }
-
-    private int GetRandomWayPoint()
-    {
-        
-        int r = rnd.Next(wayPoints.Length);
-        return r;
-
     }
 
     private void OnTriggerStay(Collider other)
