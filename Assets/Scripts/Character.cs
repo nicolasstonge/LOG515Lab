@@ -12,8 +12,9 @@ public class Character : MonoBehaviour {
     void Start () {
 
         key = false;
-        
-	}
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.None;
+    }
 	
 	// Update is called once per frame
 	void Update () {
