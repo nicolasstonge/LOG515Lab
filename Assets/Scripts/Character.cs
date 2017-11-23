@@ -13,7 +13,7 @@ public class Character : MonoBehaviour {
 
         key = false;
         Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 	
 	// Update is called once per frame

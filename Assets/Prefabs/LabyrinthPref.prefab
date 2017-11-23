@@ -139,7 +139,7 @@ MonoBehaviour:
     type: 2}
   labyrinthTileFinishPref: {fileID: 114473352026658360, guid: 2061e01ca2a06ec4aa4df5575d899a0f,
     type: 2}
-  characterPrefab: {fileID: 114630093558047904, guid: d5a80cc991ba31949ac30c36430404f1,
+  characterPrefab: {fileID: 114488911079996822, guid: 04cdbc9539352b046abe2ac651bc0d9d,
     type: 2}
   keyPrefab: {fileID: 114881792943872274, guid: eee25433320783b4d8757520116662dc,
     type: 2}
@@ -173,6 +173,6 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 1.1666666
+  m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 0}

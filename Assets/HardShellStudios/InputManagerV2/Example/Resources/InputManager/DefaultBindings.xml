@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<KeyBindings>
+  <Input Name="Player1Up" Primary="Key.W" Secondary="Key.None" Sensitivity="5" />
+  <Input Name="Player1Down" Primary="Key.S" Secondary="Key.None" Sensitivity="5" />
+  <Input Name="Player2Up" Primary="Key.UpArrow" Secondary="Key.None" Sensitivity="5" />
+  <Input Name="Player2Down" Primary="Key.DownArrow" Secondary="Key.None" Sensitivity="5" />
+  <Input Name="StartGame" Primary="Key.Space" Secondary="Key.None" Sensitivity="1" />
+  <Input Name="Left" Primary="Key.A" Secondary="Controller.LeftStickLeft" Sensitivity="3" />
+  <Input Name="Right" Primary="Key.D" Secondary="Controller.LeftStickRight" Sensitivity="3" />
+  <Input Name="Forward" Primary="Key.W" Secondary="Controller.LeftStickUp" Sensitivity="3" />
+  <Input Name="Backward" Primary="Key.S" Secondary="Controller.LeftStickDown" Sensitivity="3" />
+  <Input Name="MouseX" Primary="Axis.MouseX" Secondary="Key.None" Sensitivity="1" />
+  <Input Name="MouseY" Primary="Axis.MouseY" Secondary="Key.None" Sensitivity="1" />
+  <Input Name="ControllerRightUp" Primary="Controller.RightStickUp" Secondary="Key.None" Sensitivity="3" />
+  <Input Name="ControllerRightDown" Primary="Controller.RightStickDown" Secondary="Key.None" Sensitivity="3" />
+  <Input Name="Jump" Primary="Key.Space" Secondary="Controller.A" Sensitivity="3" />
+  <Input Name="ControllerRightLeft" Primary="Controller.RightStickLeft" Secondary="Key.None" Sensitivity="3" />
+  <Input Name="ControllerRightRight" Primary="Controller.RightStickRight" Secondary="Key.None" Sensitivity="3" />
+  <Input Name="Sprint" Primary="Key.LeftShift" Secondary="Controller.B" Sensitivity="3" />
+</KeyBindings>
