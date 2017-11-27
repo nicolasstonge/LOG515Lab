@@ -53,7 +53,7 @@ public class Monster : MonoBehaviour
             {
                 iFrame = true;
                 Invoke("resetInvulnerability", 3);
-                GameObject.Find("Character").GetComponent<Character>().takeDamage();
+                GameObject.Find("Character").GetComponent<Character>().TakeDamage();
             }
         }
     }

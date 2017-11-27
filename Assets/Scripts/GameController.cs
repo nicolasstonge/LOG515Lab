@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
         // to do restart new labyrinth
     }
 
-    public void play(int sizeX, int sizeZ)
+    public void Play(int sizeX, int sizeZ)
     {
         menuInstance.HideMenu();
         labyrinthInstance = Instantiate(labyrinthPref) as Labyrinth;
@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
         labyrinthInstance.CreateLabyrinth(sizeX, sizeZ);
     }
 
-    public void stop()
+    public void Stop()
     {
         menuInstance.ShowMenu();
         Destroy(labyrinthInstance.gameObject);
@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void gameOver()
+    public void GameOver()
     {
         menuInstance.ShowMenu();
         menuInstance.DisplayGameOver();
@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void restart(int difficulty)
+    public void Restart(int difficulty)
     {
 
         if (difficulty == 1)

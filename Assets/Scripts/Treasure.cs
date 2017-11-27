@@ -20,6 +20,6 @@ public class Treasure : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        gameControler.stop();
+        gameControler.Stop();
     }
 }

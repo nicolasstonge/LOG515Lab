@@ -21,7 +21,7 @@ public class Character : MonoBehaviour {
 		
 	}
 
-    public void takeDamage()
+    public void TakeDamage()
     {
         life --;
         Hud hud = GameObject.Find("HUD").GetComponent<Hud>();
@@ -30,10 +30,9 @@ public class Character : MonoBehaviour {
 
         if (life == 0)
         {
-            GameObject.Find("GameController").GetComponent<GameController>().gameOver();
+            GameObject.Find("GameController").GetComponent<GameController>().GameOver();
         }
 
         hud.StartBlinking();
-        
     }
 }

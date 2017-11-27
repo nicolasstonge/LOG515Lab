@@ -56,7 +56,7 @@ public class Menu : MonoBehaviour
 
     void GameOverRestartOnClick()
     {
-        gameControler.restart(selectedDifficulty);
+        gameControler.Restart(selectedDifficulty);
     }
 
     void ExitOnClick()
@@ -136,31 +136,31 @@ public class Menu : MonoBehaviour
     public void DifficultyVeryEasyOnClick()
     {
         selectedDifficulty = 1;
-        gameControler.play(5, 5);
+        gameControler.Play(5, 5);
     }
 
     public void DifficultyEasyOnClick()
     {
         selectedDifficulty = 2;
-        gameControler.play(10, 10);
+        gameControler.Play(10, 10);
     }
 
     public void DifficultyNormalOnClick()
     {
         selectedDifficulty = 3;
-        gameControler.play(20, 20);
+        gameControler.Play(20, 20);
     }
 
     public void DifficultyHardOnClick()
     {
         selectedDifficulty = 4;
-        gameControler.play(30, 30);
+        gameControler.Play(30, 30);
     }
 
     public void DifficultyVeryHardOnClick()
     {
         selectedDifficulty = 5;
-        gameControler.play(40, 40);
+        gameControler.Play(40, 40);
     }
 
     public void playMusic(bool music)
