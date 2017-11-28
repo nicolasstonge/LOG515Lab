@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class DbLoader : MonoBehaviour {
 
-    string addUserUrl = "http://stongenicolas.zapto.org/PWNN/AddUser.php";
-    string updateScoreUrl = "http://stongenicolas.zapto.org/PWNN/UpdateScore.php";
-    string updateDeathUrl = "http://stongenicolas.zapto.org/PWNN/UpdateDeath.php";
-    string updateLabDoneUrl = "http://stongenicolas.zapto.org/PWNN/UpdateLabDone.php";
-    string getAllUsersUrl = "http://stongenicolas.zapto.org/PWNN/GetAllUsers.php";
-    string getUserScoreUrl = "http://stongenicolas.zapto.org/PWNN/GetUserScore.php";
+    string addUserUrl = "http://stongenicolas.zapto.org:55020/PWNN/AddUser.php";
+    string updateScoreUrl = "http://stongenicolas.zapto.org:55020/PWNN/UpdateScore.php";
+    string updateDeathUrl = "http://stongenicolas.zapto.org:55020/PWNN/UpdateDeath.php";
+    string updateLabDoneUrl = "http://stongenicolas.zapto.org:55020/PWNN/UpdateLabDone.php";
+    string getAllUsersUrl = "http://stongenicolas.zapto.org:55020/PWNN/GetAllUsers.php";
+    string getUserScoreUrl = "http://stongenicolas.zapto.org:55020/PWNN/GetUserScore.php";
+    string getUserDeathUrl = "http://stongenicolas.zapto.org:55020/PWNN/GetUserDeath.php";
+    string getUserLabdoneUrl = "http://stongenicolas.zapto.org:55020/PWNN/GetUserLabdone.php";
 
     public string[] userList;
     public int score;
@@ -20,7 +22,6 @@ public class DbLoader : MonoBehaviour {
     IEnumerator Start ()
     {
         yield return GetAllUsers();
-        yield return GetUserScore("Bruno");
     }
 
     public IEnumerator GetAllUsers()
@@ -45,6 +46,28 @@ public class DbLoader : MonoBehaviour {
         yield return data;
         string dataString = data.text;
         score = System.Int32.Parse(dataString.Split(';')[0]);
+    }
+
+    public IEnumerator GetUserDeath(string username)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("usernamePost", username);
+
+        WWW data = new WWW(getUserDeathUrl, form);
+        yield return data;
+        string dataString = data.text;
+        death = System.Int32.Parse(dataString.Split(';')[0]);
+    }
+
+    public IEnumerator GetUserLabdone(string username)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("usernamePost", username);
+
+        WWW data = new WWW(getUserLabdoneUrl, form);
+        yield return data;
+        string dataString = data.text;
+        labdone = System.Int32.Parse(dataString.Split(';')[0]);
     }
 
     public IEnumerator AddUser(string username)
