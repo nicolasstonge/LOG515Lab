@@ -23,6 +23,7 @@ public class Menu : MonoBehaviour
     public Button profileNextBtn;
     public Button statsButton;
     public Button statsBackBtn;
+    public Button changeProfilBtn;
 
     public InputField activationField;
 
@@ -30,6 +31,7 @@ public class Menu : MonoBehaviour
 
     int selectedDifficulty;
 
+    public Text mainMenuProfile;
 
     // stats texts
     public Text statsScore;
@@ -58,6 +60,7 @@ public class Menu : MonoBehaviour
         profileNextBtn.onClick.AddListener(OptionBackOnClick);
         statsButton.onClick.AddListener(delegate { StartCoroutine(DisplayStatsMenu()); });
         statsBackBtn.onClick.AddListener(DisplayMainMenu);
+        changeProfilBtn.onClick.AddListener(DisplayProfileMenu);
 
 }
 
@@ -110,8 +113,9 @@ void Update()
     IEnumerator DisplayStatsMenu()
     {
         transform.Find("main_panel").gameObject.SetActive(false);
-        yield return WaitForStats();
+        
         transform.Find("stats_panel").gameObject.SetActive(true);
+        yield return WaitForStats();
     }
 
     IEnumerator WaitForStats()
@@ -141,6 +145,7 @@ void Update()
 
     void DisplayMainMenu()
     {
+        mainMenuProfile.text = gameControler.selectedProfile;
         transform.Find("main_panel").gameObject.SetActive(true);
         transform.Find("options_panel").gameObject.SetActive(false);
         transform.Find("difficulty_panel").gameObject.SetActive(false);

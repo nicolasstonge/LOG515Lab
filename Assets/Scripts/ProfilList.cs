@@ -8,6 +8,8 @@ public class ProfilList : MonoBehaviour {
     public DbLoader db;
     public Button nextBtn;
     public GameObject profileBtnPrefab;
+    public InputField newUserfield;
+    public Button newUserBtn;
 
     List<GameObject> btnList = new List<GameObject>();
     int clickedIndex = 555;
@@ -16,6 +18,7 @@ public class ProfilList : MonoBehaviour {
 	// Use this for initialization
 	IEnumerator Start () {
 
+        newUserBtn.onClick.AddListener(delegate { StartCoroutine(NewUserBtnClicked()); });
         db = GameObject.Find("DbLoader").GetComponent<DbLoader>();
         yield return db.GetAllUsers();
         foreach (string item in db.userList)
@@ -33,8 +36,36 @@ public class ProfilList : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        
+        if (newUserfield.text == "")
+        {
+            newUserBtn.interactable = false;
+        }
+        else
+        {
+            newUserBtn.interactable = true;
+        }
 	}
+
+    IEnumerator NewUserBtnClicked()
+    {
+        if (newUserfield.text != "")
+        {
+            yield return CreateProfil(newUserfield.text);
+        }
+        newUserfield.text = "";
+    }
+
+    IEnumerator CreateProfil(string username)
+    {
+        yield return db.AddUser(username);
+        int btnIndex = nbrButton;
+        GameObject button;
+        button = Instantiate(profileBtnPrefab, GameObject.Find("ProfileListContent").transform);
+        button.transform.GetChild(0).GetComponent<Text>().text = username;
+        button.GetComponent<Button>().onClick.AddListener(delegate { ButtonClicked(btnIndex); });
+        btnList.Add(button);
+        nbrButton++;
+    }
 
     void ButtonClicked (int btnIndex)
     {
