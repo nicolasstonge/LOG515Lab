@@ -12,7 +12,9 @@ public class GameController : MonoBehaviour
     private Menu menuInstance;
 
     int seed = (int)System.DateTime.Now.Ticks;
-    private System.Random rnd; 
+    private System.Random rnd;
+
+    public string selectedProfile;
 
     // Use this for initialization
     void Start()
