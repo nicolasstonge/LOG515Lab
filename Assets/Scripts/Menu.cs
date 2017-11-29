@@ -20,12 +20,21 @@ public class Menu : MonoBehaviour
     public Button gameOverRestartBtn;
     public Button gameOverMainMenuBtn;
     public Button gameOverExitBtn;
+    public Button profileNextBtn;
+    public Button statsButton;
+    public Button statsBackBtn;
 
     public InputField activationField;
 
     private GameController gameControler;
 
     int selectedDifficulty;
+
+
+    // stats texts
+    public Text statsScore;
+    public Text statsDeath;
+    public Text statsLabdone;
 
     // Use this for initialization
     void Start()
@@ -46,10 +55,14 @@ public class Menu : MonoBehaviour
         gameOverExitBtn.onClick.AddListener(ExitOnClick);
         gameOverMainMenuBtn.onClick.AddListener(DifficultyBackOnClick);
         gameOverRestartBtn.onClick.AddListener(GameOverRestartOnClick);
-    }
+        profileNextBtn.onClick.AddListener(OptionBackOnClick);
+        statsButton.onClick.AddListener(delegate { StartCoroutine(DisplayStatsMenu()); });
+        statsBackBtn.onClick.AddListener(DisplayMainMenu);
 
-    // Update is called once per frame
-    void Update()
+}
+
+// Update is called once per frame
+void Update()
     {
 
     }
@@ -84,7 +97,7 @@ public class Menu : MonoBehaviour
     {
         if (activationField.text == "abc123")
         {
-            DisplayMainMenu();
+            DisplayProfileMenu();
         }
 
     }
@@ -94,10 +107,36 @@ public class Menu : MonoBehaviour
         DisplayDifficultyMenu();
     }
 
+    IEnumerator DisplayStatsMenu()
+    {
+        transform.Find("main_panel").gameObject.SetActive(false);
+        yield return WaitForStats();
+        transform.Find("stats_panel").gameObject.SetActive(true);
+    }
+
+    IEnumerator WaitForStats()
+    {
+        string username = GameObject.Find("GameController").GetComponent<GameController>().selectedProfile;
+        DbLoader db = GameObject.Find("DbLoader").GetComponent<DbLoader>();
+        yield return db.GetUserScore(username);
+        yield return db.GetUserDeath(username);
+        yield return db.GetUserLabdone(username);
+        statsScore.text = db.score.ToString();
+        statsDeath.text = db.death.ToString();
+        statsLabdone.text = db.labdone.ToString();
+    }
+
     void DisplayOptionMenu()
     {
         transform.Find("main_panel").gameObject.SetActive(false);
         transform.Find("options_panel").gameObject.SetActive(true);
+    }
+
+    void DisplayProfileMenu()
+    {
+        transform.Find("profils_panel").gameObject.SetActive(true);
+        transform.Find("main_panel").gameObject.SetActive(false);
+        transform.Find("activation_panel").gameObject.SetActive(false);
     }
 
     void DisplayMainMenu()
@@ -107,6 +146,8 @@ public class Menu : MonoBehaviour
         transform.Find("difficulty_panel").gameObject.SetActive(false);
         transform.Find("activation_panel").gameObject.SetActive(false);
         transform.Find("gameover_panel").gameObject.SetActive(false);
+        transform.Find("profils_panel").gameObject.SetActive(false);
+        transform.Find("stats_panel").gameObject.SetActive(false);
     }
 
     void DisplayDifficultyMenu()

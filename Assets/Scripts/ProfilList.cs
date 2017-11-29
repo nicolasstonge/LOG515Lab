@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class ProfilList : MonoBehaviour {
 
     public DbLoader db;
+    public Button nextBtn;
     public GameObject profileBtnPrefab;
 
     List<GameObject> btnList = new List<GameObject>();
+    int clickedIndex = 555;
     int nbrButton = 0;
 
 	// Use this for initialization
@@ -27,20 +29,30 @@ public class ProfilList : MonoBehaviour {
             nbrButton++;
         }
     }
-
-    public void UpdateList()
-    {
-
-    }
 	
 	// Update is called once per frame
 	void Update () {
-		
+
+        
 	}
 
     void ButtonClicked (int btnIndex)
     {
-        
+        if (clickedIndex != 555)
+        {
+            Button button = btnList[clickedIndex].GetComponent<Button>();
+            ColorBlock cb = button.colors;
+            cb.normalColor = Color.white;
+            button.colors = cb;
+        }
+        clickedIndex = btnIndex;
         GameObject.Find("GameController").GetComponent<GameController>().selectedProfile = btnList[btnIndex].transform.GetChild(0).GetComponent<Text>().text;
+
+        Button button1 = btnList[clickedIndex].GetComponent<Button>();
+        ColorBlock cb1 = button1.colors;
+        cb1.normalColor = new Color(0.537f,0.537f,0.537f,1f);
+        button1.colors = cb1;
+
+        nextBtn.interactable = true;
     }
 }
