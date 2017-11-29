@@ -92,8 +92,11 @@ public class DbLoader : MonoBehaviour {
         yield return www;
     }
 
-    public IEnumerator UpdateDeath(string username, int nbrDeath)
+    public IEnumerator UpdateDeath(string username)
     {
+        int nbrDeath;
+        yield return GetUserDeath(username);
+        nbrDeath = death + 1;
         WWWForm form = new WWWForm();
         form.AddField("usernamePost", username);
         form.AddField("deathPost", nbrDeath);

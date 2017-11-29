@@ -52,8 +52,13 @@ public class GameController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public void GameOver()
+    public IEnumerator GameOver()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        yield return GameObject.Find("DbLoader").GetComponent<DbLoader>().UpdateDeath(selectedProfile);
+
         menuInstance.ShowMenu();
         menuInstance.DisplayGameOver();
         Destroy(labyrinthInstance.gameObject);
@@ -63,8 +68,11 @@ public class GameController : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        
+        
+        
+
+        
     }
 
     public void Restart(int difficulty)

@@ -45,7 +45,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private IEnumerator OnTriggerStay(Collider other)
     {
         if (!iFrame)
         {
@@ -53,7 +53,7 @@ public class Monster : MonoBehaviour
             {
                 iFrame = true;
                 Invoke("resetInvulnerability", 3);
-                GameObject.Find("Character").GetComponent<Character>().TakeDamage();
+                yield return GameObject.Find("Character").GetComponent<Character>().TakeDamage();
             }
         }
     }
