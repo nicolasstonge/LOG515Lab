@@ -75,9 +75,11 @@ public class GameController : MonoBehaviour
         Debug.Log("Win!");
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-
-        yield return GameObject.Find("DbLoader").GetComponent<DbLoader>().UpdateScore(selectedProfile);
-        yield return GameObject.Find("DbLoader").GetComponent<DbLoader>().UpdateLabDone(selectedProfile);
+        DbLoader db = GameObject.Find("DbLoader").GetComponent<DbLoader>();
+        yield return db.GetUserScore(selectedProfile);
+        yield return db.GetUserLabdone(selectedProfile);
+        yield return db.UpdateScore(selectedProfile, db.score + 100);
+        yield return db.UpdateLabDone(selectedProfile, db.labdone + 1);
 
         menuInstance.ShowMenu();
         menuInstance.DisplayWin();
