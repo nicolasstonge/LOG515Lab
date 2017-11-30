@@ -20,6 +20,9 @@ public class Menu : MonoBehaviour
     public Button gameOverRestartBtn;
     public Button gameOverMainMenuBtn;
     public Button gameOverExitBtn;
+    public Button winRestartBtn;
+    public Button winMainMenuBtn;
+    public Button winExitBtn;
     public Button profileNextBtn;
     public Button statsButton;
     public Button statsBackBtn;
@@ -57,6 +60,9 @@ public class Menu : MonoBehaviour
         gameOverExitBtn.onClick.AddListener(ExitOnClick);
         gameOverMainMenuBtn.onClick.AddListener(DifficultyBackOnClick);
         gameOverRestartBtn.onClick.AddListener(GameOverRestartOnClick);
+        winRestartBtn.onClick.AddListener(GameOverRestartOnClick);
+        winExitBtn.onClick.AddListener(ExitOnClick);
+        winMainMenuBtn.onClick.AddListener(DifficultyBackOnClick);
         profileNextBtn.onClick.AddListener(OptionBackOnClick);
         statsButton.onClick.AddListener(delegate { StartCoroutine(DisplayStatsMenu()); });
         statsBackBtn.onClick.AddListener(DisplayMainMenu);
@@ -151,6 +157,7 @@ void Update()
         transform.Find("difficulty_panel").gameObject.SetActive(false);
         transform.Find("activation_panel").gameObject.SetActive(false);
         transform.Find("gameover_panel").gameObject.SetActive(false);
+        transform.Find("win_panel").gameObject.SetActive(false);
         transform.Find("profils_panel").gameObject.SetActive(false);
         transform.Find("stats_panel").gameObject.SetActive(false);
     }
@@ -165,6 +172,13 @@ void Update()
     {
         transform.Find("main_panel").gameObject.SetActive(false);
         transform.Find("gameover_panel").gameObject.SetActive(true);
+        playMusic(false);
+    }
+
+    public void DisplayWin()
+    {
+        transform.Find("main_panel").gameObject.SetActive(false);
+        transform.Find("win_panel").gameObject.SetActive(true);
         playMusic(false);
     }
 

@@ -18,8 +18,8 @@ public class Treasure : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    private IEnumerator OnTriggerEnter(Collider other)
     {
-        gameControler.Stop();
+        yield return gameControler.Win();
     }
 }

@@ -67,12 +67,27 @@ public class GameController : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+ 
+    }
 
-        
-        
-        
+    public IEnumerator Win()
+    {
+        Debug.Log("Win!");
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
-        
+        yield return GameObject.Find("DbLoader").GetComponent<DbLoader>().UpdateScore(selectedProfile);
+        yield return GameObject.Find("DbLoader").GetComponent<DbLoader>().UpdateLabDone(selectedProfile);
+
+        menuInstance.ShowMenu();
+        menuInstance.DisplayWin();
+        Destroy(labyrinthInstance.gameObject);
+
+        foreach (Transform child in GameObject.Find("LabyrinthObjects").transform)
+        {
+            Destroy(child.gameObject);
+        }
+
     }
 
     public void Restart(int difficulty)

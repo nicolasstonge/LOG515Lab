@@ -82,11 +82,14 @@ public class DbLoader : MonoBehaviour {
         yield return www;
     }
 
-    public IEnumerator UpdateScore(string username, int score)
+    public IEnumerator UpdateScore(string username)
     {
+        int newscore;
+        yield return GetUserScore(username);
+        newscore = score + 100;
         WWWForm form = new WWWForm();
         form.AddField("usernamePost", username);
-        form.AddField("scorePost", score);
+        form.AddField("scorePost", newscore);
 
         WWW www = new WWW(updateScoreUrl, form);
         yield return www;
@@ -105,11 +108,15 @@ public class DbLoader : MonoBehaviour {
         yield return www;
     }
 
-    public IEnumerator UpdateLabDone(string username, int nbrLabDone)
+    public IEnumerator UpdateLabDone(string username)
     {
+        int nbrLabdone;
+        yield return GetUserLabdone(username);
+        nbrLabdone = labdone + 1;
+
         WWWForm form = new WWWForm();
         form.AddField("usernamePost", username);
-        form.AddField("labdonePost", nbrLabDone);
+        form.AddField("labdonePost", nbrLabdone);
 
         WWW www = new WWW(updateLabDoneUrl, form);
         yield return www;
